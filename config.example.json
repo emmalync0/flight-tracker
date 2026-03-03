@@ -1,0 +1,22 @@
+{
+  "rapidapi": {
+    "api_key": "YOUR_RAPIDAPI_KEY"
+  },
+  "pushover": {
+    "user_key": "YOUR_PUSHOVER_USER_KEY",
+    "app_token": "YOUR_PUSHOVER_APP_TOKEN"
+  },
+  "tracking": {
+    "routes": [
+      {"origin": "SFO", "dest": "BRU", "outbound": "2026-06-09", "return": "2026-06-15"},
+      {"origin": "SFO", "dest": "BRU", "outbound": "2026-06-10", "return": "2026-06-15"},
+      {"origin": "SFO", "dest": "BRU", "outbound": "2026-06-10", "return": "2026-06-16"},
+      {"origin": "SFO", "dest": "AMS", "outbound": "2026-06-09", "return": "2026-06-15"},
+      {"origin": "SFO", "dest": "AMS", "outbound": "2026-06-10", "return": "2026-06-15"}
+    ],
+    "cabin": "BUSINESS",
+    "passengers": 2,
+    "target_price_per_person": 3000,
+    "alert_drop_percent": 10
+  }
+}

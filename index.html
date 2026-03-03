@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antwerp Flight Tracker</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --blue: #2563eb;
+    --blue-light: #dbeafe;
+    --green: #16a34a;
+    --green-light: #dcfce7;
+    --amber: #d97706;
+    --amber-light: #fef3c7;
+    --red: #dc2626;
+    --red-light: #fee2e2;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
+    --gray-500: #64748b;
+    --gray-700: #334155;
+    --gray-900: #0f172a;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+    --shadow-md: 0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-900);
+    line-height: 1.5;
+    padding: 0 0 3rem 0;
+  }
+
+  /* ---- Header ---- */
+  .header {
+    background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
+    color: white;
+    padding: 2rem 1.5rem 2.5rem;
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: .25rem;
+    letter-spacing: -.02em;
+  }
+  .header-subtitle {
+    opacity: .85;
+    font-size: .95rem;
+  }
+  .trip-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: 1rem;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 999px;
+    padding: .3rem .75rem;
+    font-size: .8rem;
+    font-weight: 500;
+  }
+
+  /* ---- Container ---- */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ---- Metric cards ---- */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: -1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .metric-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-md);
+  }
+  .metric-label {
+    font-size: .75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--gray-500);
+    margin-bottom: .25rem;
+  }
+  .metric-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -.02em;
+  }
+  .metric-sub {
+    font-size: .8rem;
+    color: var(--gray-500);
+    margin-top: .15rem;
+  }
+  .metric-card.green  .metric-value { color: var(--green); }
+  .metric-card.blue   .metric-value { color: var(--blue); }
+  .metric-card.amber   .metric-value { color: var(--amber); }
+
+  /* ---- Sections ---- */
+  .section {
+    margin-top: 1.75rem;
+  }
+  .section-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: .75rem;
+    color: var(--gray-700);
+  }
+  .card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .card-body { padding: 1.25rem; }
+
+  /* ---- Chart ---- */
+  .chart-wrap {
+    position: relative;
+    height: 180px;
+    padding: .75rem 1.25rem;
+  }
+
+  /* ---- Route table ---- */
+  .route-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .85rem;
+  }
+  .route-table th {
+    text-align: left;
+    padding: .6rem 1rem;
+    font-weight: 600;
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--gray-500);
+    background: var(--gray-50);
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .route-table td {
+    padding: .6rem 1rem;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .route-table tr:last-child td { border-bottom: none; }
+  .route-table tr:hover { background: var(--gray-50); }
+  .price-cell { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .price-good { color: var(--green); }
+  .price-ok   { color: var(--amber); }
+  .price-high { color: var(--red); }
+  .trend-down { color: var(--green); font-weight: 600; }
+  .trend-up   { color: var(--red); font-weight: 600; }
+  .trend-flat { color: var(--gray-400); }
+  .carrier-tag {
+    display: inline-block;
+    background: var(--gray-100);
+    border-radius: 4px;
+    padding: .1rem .4rem;
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--gray-700);
+  }
+  .ua-tag { background: #1a2b6b; color: white; }
+
+  /* ---- Alerts ---- */
+  .alert-list { list-style: none; }
+  .alert-item {
+    display: flex;
+    gap: .6rem;
+    padding: .6rem 0;
+    border-bottom: 1px solid var(--gray-100);
+    font-size: .85rem;
+  }
+  .alert-item:last-child { border-bottom: none; }
+  .alert-dot {
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 6px;
+  }
+  .alert-dot.drop { background: var(--green); }
+  .alert-dot.target { background: var(--blue); }
+  .alert-time { color: var(--gray-400); font-size: .75rem; margin-top: .1rem; }
+
+  /* ---- Links grid ---- */
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: .75rem;
+  }
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .85rem 1rem;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--gray-900);
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .link-card:hover {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px var(--blue-light);
+  }
+  .link-card .icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .link-card .link-name { font-weight: 600; font-size: .85rem; }
+  .link-card .link-desc { font-size: .75rem; color: var(--gray-500); }
+  .icon-ua  { background: #1a2b6b; color: white; }
+  .icon-gf  { background: #4285f4; color: white; }
+  .icon-sky { background: #0770e3; color: white; }
+  .icon-kyk { background: #ff6d00; color: white; }
+  .icon-klm { background: #00a1e0; color: white; }
+  .icon-exp { background: #ffc72c; color: #1a1a2e; }
+
+  /* ---- Tips ---- */
+  .tip-box {
+    background: var(--blue-light);
+    border-left: 4px solid var(--blue);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin-bottom: .75rem;
+    font-size: .85rem;
+  }
+  .tip-box strong { color: var(--blue); }
+
+  /* ---- No-data state ---- */
+  .empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--gray-400);
+  }
+  .empty-state .icon { font-size: 2.5rem; margin-bottom: .5rem; }
+
+  /* ---- Footer ---- */
+  .footer {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-size: .75rem;
+    color: var(--gray-400);
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 640px) {
+    .header { padding: 1.5rem 1rem 2rem; }
+    .container { padding: 0 1rem; }
+    .metrics { grid-template-columns: 1fr 1fr; }
+    .chart-wrap { height: 220px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================================================================ -->
+<!-- HEADER                                                           -->
+<!-- ================================================================ -->
+<div class="header">
+  <div class="header-inner">
+    <h1>Antwerp Flight Tracker</h1>
+    <div class="header-subtitle">Wedding trip &mdash; SFO to Antwerp, Belgium</div>
+    <div class="trip-badges">
+      <span class="badge">Fri Jun 12 &mdash; Welcome Party</span>
+      <span class="badge">Sat Jun 13 &mdash; Wedding</span>
+      <span class="badge">Business Class</span>
+      <span class="badge">2 Travelers</span>
+      <span class="badge">United MileagePlus</span>
+      <span class="badge">Paris stopover &rarr; train to Antwerp</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ============================================================== -->
+  <!-- METRIC CARDS                                                   -->
+  <!-- ============================================================== -->
+  <div class="metrics">
+    <div class="metric-card green" id="mc-best">
+      <div class="metric-label">Current Best</div>
+      <div class="metric-value" id="val-best">&mdash;</div>
+      <div class="metric-sub" id="sub-best">per person</div>
+    </div>
+    <div class="metric-card blue" id="mc-lowest">
+      <div class="metric-label">Lowest Seen</div>
+      <div class="metric-value" id="val-lowest">&mdash;</div>
+      <div class="metric-sub" id="sub-lowest">all-time low</div>
+    </div>
+    <div class="metric-card amber">
+      <div class="metric-label">Target Price</div>
+      <div class="metric-value" id="val-target">&mdash;</div>
+      <div class="metric-sub">per person</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Last Updated</div>
+      <div class="metric-value" id="val-updated" style="font-size:1.1rem">&mdash;</div>
+      <div class="metric-sub" id="sub-checks">0 checks</div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- PRICE CHART                                                    -->
+  <!-- ============================================================== -->
+  <div class="section">
+    <div class="section-title">Price History</div>
+    <div class="card">
+      <div class="chart-wrap">
+        <canvas id="priceChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- ROUTE TABLE                                                    -->
+  <!-- ============================================================== -->
+  <div class="section">
+    <div class="section-title">Routes &amp; Date Combos</div>
+    <div class="card">
+      <div style="overflow-x:auto">
+        <table class="route-table" id="routeTable">
+          <thead>
+            <tr>
+              <th>Route</th>
+              <th>Depart</th>
+              <th>Return</th>
+              <th>Price / person</th>
+              <th>For 2</th>
+              <th>Airline</th>
+              <th>Departure &rarr; Arrival</th>
+              <th>Duration</th>
+              <th>Layover</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="routeBody">
+            <tr><td colspan="8" class="empty-state"><div class="icon">&#9992;</div>No data yet. Run <code>python check_prices.py</code> or add prices manually.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- ALERTS                                                         -->
+  <!-- ============================================================== -->
+  <div class="section">
+    <div class="section-title">Recent Alerts</div>
+    <div class="card">
+      <div class="card-body">
+        <ul class="alert-list" id="alertList">
+          <li class="empty-state" style="padding:1.5rem 0">No alerts yet.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- BOOKING LINKS                                                  -->
+  <!-- ============================================================== -->
+  <div class="section">
+    <div class="section-title">Quick Booking Links</div>
+    <div class="links-grid">
+      <a class="link-card" href="https://www.united.com/en/us/fsr/choose-flights?f=SFO&t=BRU&d=2026-06-09&r=2026-06-15&tt=1&sc=7&px=2&taxng=1&newHP=True&clm=7&st=bestmatches&fareWheel=True" target="_blank" rel="noopener">
+        <div class="icon icon-ua">UA</div>
+        <div><div class="link-name">United.com</div><div class="link-desc">Search with MileagePlus pricing</div></div>
+      </a>
+      <a class="link-card" href="https://www.google.com/travel/flights?q=Flights%20from%20SFO%20to%20BRU%20on%202026-06-09%20through%202026-06-15%20business%20class" target="_blank" rel="noopener">
+        <div class="icon icon-gf">G</div>
+        <div><div class="link-name">Google Flights</div><div class="link-desc">Compare all airlines, track prices</div></div>
+      </a>
+      <a class="link-card" href="https://www.skyscanner.com/transport/flights/sfo/brus/260609/260615/?adultsv2=2&cabinclass=business" target="_blank" rel="noopener">
+        <div class="icon icon-sky">S</div>
+        <div><div class="link-name">Skyscanner</div><div class="link-desc">"Whole month" view for cheapest days</div></div>
+      </a>
+      <a class="link-card" href="https://www.kayak.com/flights/SFO-BRU/2026-06-09/2026-06-15/business/2adults?sort=price_a" target="_blank" rel="noopener">
+        <div class="icon icon-kyk">K</div>
+        <div><div class="link-name">KAYAK</div><div class="link-desc">Price alerts &amp; fare predictor</div></div>
+      </a>
+      <a class="link-card" href="https://www.google.com/travel/flights?q=Flights%20from%20SFO%20to%20AMS%20on%202026-06-09%20through%202026-06-15%20business%20class" target="_blank" rel="noopener">
+        <div class="icon icon-klm">A</div>
+        <div><div class="link-name">Google Flights (AMS)</div><div class="link-desc">Fly to Amsterdam + 1hr train</div></div>
+      </a>
+      <a class="link-card" href="https://www.expedia.com/Flights-search?leg1=from:SFO,to:BRU,departure:06/09/2026&leg2=from:BRU,to:SFO,departure:06/15/2026&passengers=adults:2&options=cabin:business" target="_blank" rel="noopener">
+        <div class="icon icon-exp">E</div>
+        <div><div class="link-name">Expedia</div><div class="link-desc">Bundle hotel + flight discounts</div></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- UNITED TIPS                                                    -->
+  <!-- ============================================================== -->
+  <div class="section">
+    <div class="section-title">United MileagePlus Tips</div>
+    <div class="card card-body">
+      <div class="tip-box">
+        <strong>Award flights:</strong> Search united.com with "Book with miles" toggled on. Polaris Business SFO&rarr;Europe typically costs 60&ndash;80k miles + taxes one-way. Saver awards open ~330 days out &mdash; June dates should be open now.
+      </div>
+      <div class="tip-box">
+        <strong>Star Alliance partners:</strong> United can book Lufthansa, SWISS, Brussels Airlines, Austrian, LOT, and Turkish business class using MileagePlus miles. Lufthansa via FRA or MUC is often available.
+      </div>
+      <div class="tip-box">
+        <strong>Excursionist Perk:</strong> With a round-trip award, you get a free one-way within Europe. You could fly SFO&rarr;BRU, then BRU&rarr;AMS (free), then AMS&rarr;SFO.
+      </div>
+      <div class="tip-box" style="border-left-color: var(--green)">
+        <strong>Paris &rarr; Antwerp:</strong> Thalys/Eurostar high-speed train from Paris Gare du Nord to Antwerp-Centraal takes ~1hr 50min. Tickets from &euro;29 on <a href="https://www.thetrainline.com" target="_blank" style="color:var(--blue)">thetrainline.com</a>. Book early for the best fares.
+      </div>
+      <div class="tip-box" style="border-left-color: var(--amber)">
+        <strong>Cash fare tips:</strong> United Polaris Business fares fluctuate significantly. Tues/Wed departures are often $500&ndash;1000 cheaper than weekend departures. Check "flexible dates" on united.com.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Flight Tracker &mdash; data refreshed by <code>check_prices.py</code> &mdash; prices per person in USD
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- DATA + SCRIPT                                                    -->
+<!-- ================================================================ -->
+<script src="data.js"></script>
+<script>
+(function() {
+  const D = window.FLIGHT_DATA;
+  if (!D || !D.routes || Object.keys(D.routes).length === 0) return;
+
+  const $ = id => document.getElementById(id);
+  const fmt = n => n != null ? '$' + Math.round(n).toLocaleString() : '\u2014';
+  const target = D.config?.targetPrice || 3000;
+
+  // ---- Metric cards ----
+  let currentBest = null;
+  let bestRoute = null;
+  for (const [key, r] of Object.entries(D.routes)) {
+    if (!r.history || r.history.length === 0) continue;
+    const last = r.history[r.history.length - 1];
+    if (currentBest === null || last.price < currentBest) {
+      currentBest = last.price;
+      bestRoute = r;
+    }
+  }
+
+  $('val-best').textContent = fmt(currentBest);
+  if (bestRoute) {
+    const last = bestRoute.history[bestRoute.history.length - 1];
+    $('sub-best').textContent =
+      `per person \u00b7 ${bestRoute.origin}\u2192${bestRoute.destination} ` +
+      `${bestRoute.outbound.slice(5)} to ${bestRoute.return.slice(5)} ` +
+      `(${last.carrier || '?'})`;
+  }
+
+  $('val-lowest').textContent = fmt(D.stats?.lowestEver);
+  $('val-target').textContent = fmt(target);
+
+  if (D.lastUpdated) {
+    const d = new Date(D.lastUpdated);
+    $('val-updated').textContent = d.toLocaleString('en-US', {
+      month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
+    });
+  }
+  $('sub-checks').textContent = `${D.stats?.checkCount || 0} checks run`;
+
+  // ---- Price class helper ----
+  function priceClass(p) {
+    if (p <= target) return 'price-good';
+    if (p <= target * 1.25) return 'price-ok';
+    return 'price-high';
+  }
+
+  // ---- Helpers for dates ----
+  const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  function fmtDateWithDay(isoDate) {
+    const d = new Date(isoDate + 'T12:00:00');
+    const day = DAYS[d.getDay()];
+    const month = d.toLocaleString('en-US', { month: 'short' });
+    const date = d.getDate();
+    return `<strong>${day}</strong><br>${month} ${date}`;
+  }
+
+  function googleFlightsUrl(origin, dest, outDate, retDate) {
+    return `https://www.google.com/travel/flights?q=Flights+from+${origin}+to+${dest}+on+${outDate}+through+${retDate}+business+class`;
+  }
+
+  // ---- Route table ----
+  const rows = [];
+  for (const [key, r] of Object.entries(D.routes)) {
+    if (!r.history || r.history.length === 0) continue;
+    const last = r.history[r.history.length - 1];
+
+    const carrier = (last.carrier || '??');
+    const isUA = carrier.toUpperCase() === 'UA' || carrier.toUpperCase() === 'UNITED';
+
+    const depTime = last.departureTime || '\u2014';
+    const arrTime = last.arrivalTime || '\u2014';
+    const layover = last.layover || (last.outStops === 0 ? 'Nonstop' : '\u2014');
+    const duration = last.outDuration || '\u2014';
+    const flightUrl = googleFlightsUrl(r.origin, r.destination, r.outbound, r.return);
+
+    rows.push({
+      key, r, last, price: last.price,
+      html: `<tr>
+        <td style="white-space:nowrap"><strong>${r.origin} \u2192 ${r.destination}</strong></td>
+        <td>${fmtDateWithDay(r.outbound)}</td>
+        <td>${fmtDateWithDay(r.return)}</td>
+        <td class="price-cell ${priceClass(last.price)}">${fmt(last.price)}</td>
+        <td class="price-cell" style="color:var(--gray-500)">${fmt(last.price * 2)}</td>
+        <td><span class="carrier-tag ${isUA ? 'ua-tag' : ''}">${carrier}</span></td>
+        <td style="font-size:.8rem">${depTime}<br>\u2192 ${arrTime}</td>
+        <td>${duration}</td>
+        <td style="font-size:.8rem">${layover}</td>
+        <td><a href="${flightUrl}" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;font-size:.8rem;text-decoration:none">Book \u2192</a></td>
+      </tr>`
+    });
+  }
+
+  rows.sort((a, b) => a.price - b.price);
+  $('routeBody').innerHTML = rows.map(r => r.html).join('');
+
+  // ---- Alerts ----
+  if (D.alerts && D.alerts.length > 0) {
+    const items = D.alerts.slice().reverse().slice(0, 15);
+    $('alertList').innerHTML = items.map(a => {
+      const isDrop = (a.message || '').toLowerCase().includes('drop');
+      const d = new Date(a.timestamp);
+      const when = d.toLocaleString('en-US', { month:'short', day:'numeric', hour:'numeric', minute:'2-digit' });
+      return `<li class="alert-item">
+        <span class="alert-dot ${isDrop ? 'drop' : 'target'}"></span>
+        <div>
+          <div>${a.message}</div>
+          <div class="alert-time">${when}</div>
+        </div>
+      </li>`;
+    }).join('');
+  }
+
+  // ---- Chart ----
+  // Group all route histories onto one timeline, show top-5 cheapest routes
+  const routeEntries = Object.entries(D.routes)
+    .filter(([,r]) => r.history && r.history.length > 1)
+    .map(([key, r]) => {
+      const last = r.history[r.history.length - 1];
+      return { key, r, lastPrice: last.price };
+    })
+    .sort((a, b) => a.lastPrice - b.lastPrice)
+    .slice(0, 6);
+
+  if (routeEntries.length === 0) return;
+
+  const palette = ['#2563eb','#16a34a','#d97706','#dc2626','#8b5cf6','#06b6d4'];
+  const datasets = routeEntries.map((entry, i) => ({
+    label: `${entry.r.origin}\u2192${entry.r.destination} ${entry.r.outbound.slice(5)}\u2013${entry.r.return.slice(5)}`,
+    data: entry.r.history.map(h => ({
+      x: new Date(h.timestamp),
+      y: h.price
+    })),
+    borderColor: palette[i % palette.length],
+    backgroundColor: palette[i % palette.length] + '18',
+    borderWidth: 2,
+    pointRadius: 3,
+    tension: 0.3,
+    fill: false,
+  }));
+
+  // Target line
+  datasets.push({
+    label: 'Target',
+    data: routeEntries[0].r.history.map(h => ({ x: new Date(h.timestamp), y: target })),
+    borderColor: '#d97706',
+    borderDash: [6, 4],
+    borderWidth: 1.5,
+    pointRadius: 0,
+    fill: false,
+  });
+
+  new Chart($('priceChart'), {
+    type: 'line',
+    data: { datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { position: 'bottom', labels: { boxWidth: 12, padding: 12, font: { size: 11 } } },
+        tooltip: {
+          callbacks: {
+            label: ctx => `${ctx.dataset.label}: $${Math.round(ctx.parsed.y).toLocaleString()}`
+          }
+        }
+      },
+      scales: {
+        x: {
+          type: 'timeseries',
+          time: { unit: 'day', tooltipFormat: 'MMM d, h:mm a' },
+          grid: { display: false },
+          ticks: { font: { size: 11 } },
+        },
+        y: {
+          ticks: {
+            callback: v => '$' + v.toLocaleString(),
+            font: { size: 11 },
+          },
+          grid: { color: '#f1f5f9' },
+        }
+      }
+    }
+  });
+
+})();
+</script>
+</body>
+</html>
