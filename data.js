@@ -1,10 +1,10 @@
 window.FLIGHT_DATA = {
-  "lastUpdated": "2026-03-04T16:00:30.678410+00:00",
+  "lastUpdated": "2026-03-05T16:04:24.588911+00:00",
   "config": {
     "origin": "SFO",
     "destinations": [
-      "BRU",
-      "CDG"
+      "CDG",
+      "BRU"
     ],
     "cabin": "BUSINESS",
     "passengers": 2,
@@ -38,6 +38,17 @@ window.FLIGHT_DATA = {
           "arrivalTime": "08-06-2026 06:50 PM",
           "flightNumbers": "LO 36, LO 335",
           "layover": "4 hr 20 min in Warsaw"
+        },
+        {
+          "timestamp": "2026-03-05T16:03:56.044779+00:00",
+          "price": 6104.0,
+          "carrier": "British Airways",
+          "outStops": 1,
+          "outDuration": "16 hr 5 min",
+          "departureTime": "07-06-2026 07:30 PM",
+          "arrivalTime": "08-06-2026 08:35 PM",
+          "flightNumbers": "BA 286, BA 312",
+          "layover": "4 hr 25 min in London"
         }
       ]
     },
@@ -68,6 +79,17 @@ window.FLIGHT_DATA = {
           "arrivalTime": "09-06-2026 06:55 PM",
           "flightNumbers": "BA 286, BA 310",
           "layover": "2 hr 35 min in London"
+        },
+        {
+          "timestamp": "2026-03-05T16:03:56.044779+00:00",
+          "price": 6325.0,
+          "carrier": "American",
+          "outStops": 1,
+          "outDuration": "16 hr 5 min",
+          "departureTime": "08-06-2026 06:15 AM",
+          "arrivalTime": "09-06-2026 07:20 AM",
+          "flightNumbers": "AA 234, AA 42",
+          "layover": "2 hr 51 min in New York"
         }
       ]
     },
@@ -98,6 +120,17 @@ window.FLIGHT_DATA = {
           "arrivalTime": "09-06-2026 04:40 PM",
           "flightNumbers": "BA 284, BA 308",
           "layover": "3 hr 20 min in London"
+        },
+        {
+          "timestamp": "2026-03-05T16:03:56.044779+00:00",
+          "price": 5510.0,
+          "carrier": "Air Canada",
+          "outStops": 1,
+          "outDuration": "14 hr 0 min",
+          "departureTime": "08-06-2026 08:05 AM",
+          "arrivalTime": "09-06-2026 07:05 AM",
+          "flightNumbers": "AC 756, AC 874",
+          "layover": "1 hr 35 min in Montreal"
         }
       ]
     },
@@ -128,6 +161,17 @@ window.FLIGHT_DATA = {
           "arrivalTime": "11-06-2026 10:35 PM",
           "flightNumbers": "LO 38, LO 231",
           "layover": "2 hr 0 min in Warsaw"
+        },
+        {
+          "timestamp": "2026-03-05T16:03:56.044779+00:00",
+          "price": 4860.0,
+          "carrier": "Condor",
+          "outStops": 1,
+          "outDuration": "16 hr 0 min",
+          "departureTime": "10-06-2026 04:30 PM",
+          "arrivalTime": "11-06-2026 05:30 PM",
+          "flightNumbers": "DE 2097, SN 2614",
+          "layover": "3 hr 45 min in Frankfurt am Main"
         }
       ]
     },
@@ -158,6 +202,17 @@ window.FLIGHT_DATA = {
           "arrivalTime": "11-06-2026 10:35 PM",
           "flightNumbers": "LO 38, LO 231",
           "layover": "2 hr 0 min in Warsaw"
+        },
+        {
+          "timestamp": "2026-03-05T16:03:56.044779+00:00",
+          "price": 4864.0,
+          "carrier": "Tap Air Portugal",
+          "outStops": 1,
+          "outDuration": "22 hr 5 min",
+          "departureTime": "10-06-2026 04:35 PM",
+          "arrivalTime": "11-06-2026 11:40 PM",
+          "flightNumbers": "TP 238, SN 3820",
+          "layover": "8 hr 5 min in Lisbon"
         }
       ]
     }
@@ -165,6 +220,6 @@ window.FLIGHT_DATA = {
   "alerts": [],
   "stats": {
     "lowestEver": 4268.0,
-    "checkCount": 2
+    "checkCount": 3
   }
 };
