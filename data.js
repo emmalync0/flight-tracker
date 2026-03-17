@@ -1,5 +1,5 @@
 window.FLIGHT_DATA = {
-  "lastUpdated": "2026-03-17T23:47:08.632228+00:00",
+  "lastUpdated": "2026-03-17T23:55:41.876903+00:00",
   "config": {
     "origin": "SFO",
     "destinations": [
@@ -71,6 +71,17 @@ window.FLIGHT_DATA = {
           "arrivalTime": "08-06-2026 06:50 PM",
           "flightNumbers": "LO 36, LO 335",
           "layover": "4 hr 20 min in Warsaw"
+        },
+        {
+          "timestamp": "2026-03-17T23:55:10.777369+00:00",
+          "price": 6218.0,
+          "carrier": "LOT",
+          "outStops": 1,
+          "outDuration": "18 hr 0 min",
+          "departureTime": "07-06-2026 03:50 PM",
+          "arrivalTime": "08-06-2026 06:50 PM",
+          "flightNumbers": "LO 36, LO 335",
+          "layover": "4 hr 20 min in Warsaw"
         }
       ]
     },
@@ -116,6 +127,17 @@ window.FLIGHT_DATA = {
         {
           "timestamp": "2026-03-17T23:46:29.773498+00:00",
           "price": 6394.0,
+          "carrier": "Turkish Airlines",
+          "outStops": 1,
+          "outDuration": "19 hr 5 min",
+          "departureTime": "08-06-2026 12:55 PM",
+          "arrivalTime": "09-06-2026 05:00 PM",
+          "flightNumbers": "TK 290, TK 1833",
+          "layover": "2 hr 25 min in Istanbul"
+        },
+        {
+          "timestamp": "2026-03-17T23:55:10.777369+00:00",
+          "price": 6414.0,
           "carrier": "Turkish Airlines",
           "outStops": 1,
           "outDuration": "19 hr 5 min",
@@ -178,6 +200,17 @@ window.FLIGHT_DATA = {
         },
         {
           "timestamp": "2026-03-17T23:46:29.773498+00:00",
+          "price": 6590.0,
+          "carrier": "Condor",
+          "outStops": 1,
+          "outDuration": "14 hr 20 min",
+          "departureTime": "08-06-2026 04:30 PM",
+          "arrivalTime": "09-06-2026 03:50 PM",
+          "flightNumbers": "DE 2097, DE 4215",
+          "layover": "1 hr 50 min in Frankfurt am Main"
+        },
+        {
+          "timestamp": "2026-03-17T23:55:10.777369+00:00",
           "price": 6590.0,
           "carrier": "Condor",
           "outStops": 1,
@@ -249,6 +282,17 @@ window.FLIGHT_DATA = {
           "arrivalTime": "12-06-2026 09:25 AM",
           "flightNumbers": "LO 38, LO 235",
           "layover": "12 hr 45 min in Warsaw"
+        },
+        {
+          "timestamp": "2026-03-17T23:55:10.777369+00:00",
+          "price": 4444.0,
+          "carrier": "LOT",
+          "outStops": 1,
+          "outDuration": "26 hr 10 min",
+          "departureTime": "10-06-2026 10:15 PM",
+          "arrivalTime": "12-06-2026 09:25 AM",
+          "flightNumbers": "LO 38, LO 235",
+          "layover": "12 hr 45 min in Warsaw"
         }
       ]
     },
@@ -312,6 +356,17 @@ window.FLIGHT_DATA = {
           "arrivalTime": "12-06-2026 09:25 AM",
           "flightNumbers": "LO 38, LO 235",
           "layover": "12 hr 45 min in Warsaw"
+        },
+        {
+          "timestamp": "2026-03-17T23:55:10.777369+00:00",
+          "price": 4458.0,
+          "carrier": "LOT",
+          "outStops": 1,
+          "outDuration": "26 hr 10 min",
+          "departureTime": "10-06-2026 10:15 PM",
+          "arrivalTime": "12-06-2026 09:25 AM",
+          "flightNumbers": "LO 38, LO 235",
+          "layover": "12 hr 45 min in Warsaw"
         }
       ]
     }
@@ -319,6 +374,6 @@ window.FLIGHT_DATA = {
   "alerts": [],
   "stats": {
     "lowestEver": 4268.0,
-    "checkCount": 5
+    "checkCount": 6
   }
 };
