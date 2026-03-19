@@ -82,6 +82,17 @@
           "arrivalTime": "08-06-2026 03:50 PM",
           "flightNumbers": "DE 2097, DE 4215",
           "layover": "1 hr 50 min in Frankfurt am Main"
+        },
+        {
+          "timestamp": "2026-03-19T15:00:01.025485+00:00",
+          "price": 6219.0,
+          "carrier": "LOT",
+          "outStops": 1,
+          "outDuration": "18 hr 0 min",
+          "departureTime": "07-06-2026 03:50 PM",
+          "arrivalTime": "08-06-2026 06:50 PM",
+          "flightNumbers": "LO 36, LO 335",
+          "layover": "4 hr 20 min in Warsaw"
         }
       ]
     },
@@ -148,6 +159,17 @@
         },
         {
           "timestamp": "2026-03-18T15:00:03.872103+00:00",
+          "price": 6200.0,
+          "carrier": "Condor",
+          "outStops": 1,
+          "outDuration": "14 hr 20 min",
+          "departureTime": "08-06-2026 04:30 PM",
+          "arrivalTime": "09-06-2026 03:50 PM",
+          "flightNumbers": "DE 2097, DE 4215",
+          "layover": "1 hr 50 min in Frankfurt am Main"
+        },
+        {
+          "timestamp": "2026-03-19T15:00:01.025485+00:00",
           "price": 6200.0,
           "carrier": "Condor",
           "outStops": 1,
@@ -241,6 +263,17 @@
           "arrivalTime": "09-06-2026 07:05 AM",
           "flightNumbers": "AC 756, AC 874",
           "layover": "1 hr 35 min in Montreal"
+        },
+        {
+          "timestamp": "2026-03-19T15:00:01.025485+00:00",
+          "price": 6590.0,
+          "carrier": "Condor",
+          "outStops": 1,
+          "outDuration": "14 hr 20 min",
+          "departureTime": "08-06-2026 04:30 PM",
+          "arrivalTime": "09-06-2026 03:50 PM",
+          "flightNumbers": "DE 2097, DE 4215",
+          "layover": "1 hr 50 min in Frankfurt am Main"
         }
       ]
     },
@@ -319,6 +352,17 @@
         {
           "timestamp": "2026-03-18T15:00:03.872103+00:00",
           "price": 4444.0,
+          "carrier": "LOT",
+          "outStops": 1,
+          "outDuration": "26 hr 10 min",
+          "departureTime": "10-06-2026 10:15 PM",
+          "arrivalTime": "12-06-2026 09:25 AM",
+          "flightNumbers": "LO 38, LO 235",
+          "layover": "12 hr 45 min in Warsaw"
+        },
+        {
+          "timestamp": "2026-03-19T15:00:01.025485+00:00",
+          "price": 4445.0,
           "carrier": "LOT",
           "outStops": 1,
           "outDuration": "26 hr 10 min",
@@ -411,13 +455,30 @@
           "arrivalTime": "12-06-2026 09:25 AM",
           "flightNumbers": "LO 38, LO 235",
           "layover": "12 hr 45 min in Warsaw"
+        },
+        {
+          "timestamp": "2026-03-19T15:00:01.025485+00:00",
+          "price": 4965.0,
+          "carrier": "LOT",
+          "outStops": 1,
+          "outDuration": "26 hr 10 min",
+          "departureTime": "10-06-2026 10:15 PM",
+          "arrivalTime": "12-06-2026 09:25 AM",
+          "flightNumbers": "LO 38, LO 235",
+          "layover": "12 hr 45 min in Warsaw"
         }
       ]
     }
   },
-  "alerts": [],
+  "alerts": [
+    {
+      "timestamp": "2026-03-19T15:00:01.025485+00:00",
+      "message": "Price drop 11%: SFO->CDG 2026-06-08 to 2026-06-16 now $6,590/person (was $7,392)",
+      "route": "SFO-CDG_2026-06-08_2026-06-16"
+    }
+  ],
   "stats": {
     "lowestEver": 4268.0,
-    "checkCount": 7
+    "checkCount": 8
   }
 }
