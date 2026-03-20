@@ -1,10 +1,10 @@
 window.FLIGHT_DATA = {
-  "lastUpdated": "2026-03-19T15:00:25.494962+00:00",
+  "lastUpdated": "2026-03-20T15:00:24.759044+00:00",
   "config": {
     "origin": "SFO",
     "destinations": [
-      "CDG",
-      "BRU"
+      "BRU",
+      "CDG"
     ],
     "cabin": "BUSINESS",
     "passengers": 2,
@@ -104,6 +104,17 @@ window.FLIGHT_DATA = {
           "arrivalTime": "08-06-2026 06:50 PM",
           "flightNumbers": "LO 36, LO 335",
           "layover": "4 hr 20 min in Warsaw"
+        },
+        {
+          "timestamp": "2026-03-20T15:00:00.823065+00:00",
+          "price": 6219.0,
+          "carrier": "LOT",
+          "outStops": 1,
+          "outDuration": "18 hr 0 min",
+          "departureTime": "07-06-2026 03:50 PM",
+          "arrivalTime": "08-06-2026 06:50 PM",
+          "flightNumbers": "LO 36, LO 335",
+          "layover": "4 hr 20 min in Warsaw"
         }
       ]
     },
@@ -181,6 +192,17 @@ window.FLIGHT_DATA = {
         },
         {
           "timestamp": "2026-03-19T15:00:01.025485+00:00",
+          "price": 6200.0,
+          "carrier": "Condor",
+          "outStops": 1,
+          "outDuration": "14 hr 20 min",
+          "departureTime": "08-06-2026 04:30 PM",
+          "arrivalTime": "09-06-2026 03:50 PM",
+          "flightNumbers": "DE 2097, DE 4215",
+          "layover": "1 hr 50 min in Frankfurt am Main"
+        },
+        {
+          "timestamp": "2026-03-20T15:00:00.823065+00:00",
           "price": 6200.0,
           "carrier": "Condor",
           "outStops": 1,
@@ -285,6 +307,17 @@ window.FLIGHT_DATA = {
           "arrivalTime": "09-06-2026 03:50 PM",
           "flightNumbers": "DE 2097, DE 4215",
           "layover": "1 hr 50 min in Frankfurt am Main"
+        },
+        {
+          "timestamp": "2026-03-20T15:00:00.823065+00:00",
+          "price": 6998.0,
+          "carrier": "JetBlue",
+          "outStops": 1,
+          "outDuration": "13 hr 59 min",
+          "departureTime": "08-06-2026 11:31 AM",
+          "arrivalTime": "09-06-2026 10:30 AM",
+          "flightNumbers": "B6 834, B6 33",
+          "layover": "0 hr 58 min in Boston"
         }
       ]
     },
@@ -381,6 +414,17 @@ window.FLIGHT_DATA = {
           "arrivalTime": "12-06-2026 09:25 AM",
           "flightNumbers": "LO 38, LO 235",
           "layover": "12 hr 45 min in Warsaw"
+        },
+        {
+          "timestamp": "2026-03-20T15:00:00.823065+00:00",
+          "price": 4445.0,
+          "carrier": "LOT",
+          "outStops": 1,
+          "outDuration": "35 hr 25 min",
+          "departureTime": "10-06-2026 10:15 PM",
+          "arrivalTime": "12-06-2026 06:40 PM",
+          "flightNumbers": "LO 38, LO 233",
+          "layover": "22 hr 5 min in Warsaw"
         }
       ]
     },
@@ -477,6 +521,17 @@ window.FLIGHT_DATA = {
           "arrivalTime": "12-06-2026 09:25 AM",
           "flightNumbers": "LO 38, LO 235",
           "layover": "12 hr 45 min in Warsaw"
+        },
+        {
+          "timestamp": "2026-03-20T15:00:00.823065+00:00",
+          "price": 4459.0,
+          "carrier": "LOT",
+          "outStops": 1,
+          "outDuration": "35 hr 25 min",
+          "departureTime": "10-06-2026 10:15 PM",
+          "arrivalTime": "12-06-2026 06:40 PM",
+          "flightNumbers": "LO 38, LO 233",
+          "layover": "22 hr 5 min in Warsaw"
         }
       ]
     }
@@ -486,10 +541,15 @@ window.FLIGHT_DATA = {
       "timestamp": "2026-03-19T15:00:01.025485+00:00",
       "message": "Price drop 11%: SFO->CDG 2026-06-08 to 2026-06-16 now $6,590/person (was $7,392)",
       "route": "SFO-CDG_2026-06-08_2026-06-16"
+    },
+    {
+      "timestamp": "2026-03-20T15:00:00.823065+00:00",
+      "message": "Price drop 10%: SFO->BRU 2026-06-10 to 2026-06-15 now $4,459/person (was $4,965)",
+      "route": "SFO-BRU_2026-06-10_2026-06-15"
     }
   ],
   "stats": {
     "lowestEver": 4268.0,
-    "checkCount": 8
+    "checkCount": 9
   }
 };
