@@ -1,5 +1,5 @@
 window.FLIGHT_DATA = {
-  "lastUpdated": "2026-03-27T23:33:05.817323+00:00",
+  "lastUpdated": "2026-03-27T23:36:53.700270+00:00",
   "config": {
     "origin": "SFO",
     "destinations": [
@@ -50,6 +50,24 @@ window.FLIGHT_DATA = {
           "arrivalTime": "13-06-2026 09:20 AM",
           "flightNumbers": "B6 1734, B6 31",
           "layover": "1 hr 5 min in Boston"
+        },
+        {
+          "timestamp": "2026-03-27T23:36:40.156106+00:00",
+          "price": 6165.0,
+          "carrier": "JetBlue",
+          "outStops": 1,
+          "outDuration": "13 hr 55 min",
+          "departureTime": "12-06-2026 10:25 AM",
+          "arrivalTime": "13-06-2026 09:20 AM",
+          "flightNumbers": "B6 1734, B6 31",
+          "layover": "1 hr 5 min in Boston",
+          "unitedPrice": 7641.0,
+          "unitedStops": 0,
+          "unitedDuration": "10 hr 25 min",
+          "unitedDepartureTime": "12-06-2026 02:55 PM",
+          "unitedArrivalTime": "13-06-2026 10:20 AM",
+          "unitedFlightNumbers": "UA 968",
+          "unitedLayover": ""
         }
       ]
     },
@@ -91,6 +109,24 @@ window.FLIGHT_DATA = {
           "arrivalTime": "13-06-2026 07:10 AM",
           "flightNumbers": "AC 756, AC 832",
           "layover": "1 hr 20 min in Montreal"
+        },
+        {
+          "timestamp": "2026-03-27T23:36:40.156106+00:00",
+          "price": 6120.0,
+          "carrier": "Condor",
+          "outStops": 1,
+          "outDuration": "16 hr 0 min",
+          "departureTime": "12-06-2026 04:30 PM",
+          "arrivalTime": "13-06-2026 05:30 PM",
+          "flightNumbers": "DE 2097, SN 2614",
+          "layover": "3 hr 45 min in Frankfurt am Main",
+          "unitedPrice": 7817.0,
+          "unitedStops": 1,
+          "unitedDuration": "13 hr 50 min",
+          "unitedDepartureTime": "12-06-2026 01:55 PM",
+          "unitedArrivalTime": "13-06-2026 12:45 PM",
+          "unitedFlightNumbers": "UA 58, SN 2610",
+          "unitedLayover": "1 hr 55 min in Frankfurt am Main"
         }
       ]
     },
@@ -132,6 +168,24 @@ window.FLIGHT_DATA = {
           "arrivalTime": "13-06-2026 11:05 PM",
           "flightNumbers": "VS 42, BA 756",
           "layover": "3 hr 0 min in London"
+        },
+        {
+          "timestamp": "2026-03-27T23:36:40.156106+00:00",
+          "price": 6890.0,
+          "carrier": "Virgin Atlantic",
+          "outStops": 1,
+          "outDuration": "14 hr 50 min",
+          "departureTime": "12-06-2026 11:15 PM",
+          "arrivalTime": "13-06-2026 11:05 PM",
+          "flightNumbers": "VS 42, BA 756",
+          "layover": "3 hr 0 min in London",
+          "unitedPrice": 7808.0,
+          "unitedStops": 1,
+          "unitedDuration": "14 hr 40 min",
+          "unitedDepartureTime": "12-06-2026 01:55 PM",
+          "unitedArrivalTime": "13-06-2026 01:35 PM",
+          "unitedFlightNumbers": "UA 58, LX 1083",
+          "unitedLayover": "2 hr 40 min in Frankfurt am Main"
         }
       ]
     }
@@ -146,10 +200,15 @@ window.FLIGHT_DATA = {
       "timestamp": "2026-03-20T15:00:00.823065+00:00",
       "message": "Price drop 10%: SFO->BRU 2026-06-10 to 2026-06-15 now $4,459/person (was $4,965)",
       "route": "SFO-BRU_2026-06-10_2026-06-15"
+    },
+    {
+      "timestamp": "2026-03-27T23:36:40.156106+00:00",
+      "message": "Price drop 18%: SFO->BRU 2026-06-12 to 2026-06-19 now $6,120/person (was $7,436)",
+      "route": "SFO-BRU_2026-06-12_2026-06-19"
     }
   ],
   "stats": {
     "lowestEver": 4268.0,
-    "checkCount": 12
+    "checkCount": 13
   }
 };

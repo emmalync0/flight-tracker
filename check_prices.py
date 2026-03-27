@@ -278,6 +278,21 @@ def check_prices(config):
                 f"({best['outCarrier']}, {best['outStops']} stop(s))"
             )
 
+            # Find best United offer
+            ua_offers = [
+                o for o in offers
+                if "united" in o["outCarrier"].lower()
+                or o.get("flightNumbers", "").upper().startswith("UA")
+            ]
+            ua_best = ua_offers[0] if ua_offers else None
+            if ua_best:
+                print(
+                    f"    Best UA: ${ua_best['price']:,.0f}/person "
+                    f"({ua_best['outStops']} stop(s), {ua_best.get('layover', 'nonstop')})"
+                )
+            else:
+                print("    No United flights found")
+
             # Ensure route entry exists
             if route_key not in history["routes"]:
                 history["routes"][route_key] = {
@@ -294,7 +309,7 @@ def check_prices(config):
                 if route_hist["history"] else None
             )
 
-            route_hist["history"].append({
+            entry = {
                 "timestamp": now,
                 "price": best["price"],
                 "carrier": best["outCarrier"],
@@ -304,7 +319,16 @@ def check_prices(config):
                 "arrivalTime": best.get("arrivalTime", ""),
                 "flightNumbers": best.get("flightNumbers", ""),
                 "layover": best.get("layover", ""),
-            })
+            }
+            if ua_best:
+                entry["unitedPrice"] = ua_best["price"]
+                entry["unitedStops"] = ua_best["outStops"]
+                entry["unitedDuration"] = ua_best.get("outDuration", "")
+                entry["unitedDepartureTime"] = ua_best.get("departureTime", "")
+                entry["unitedArrivalTime"] = ua_best.get("arrivalTime", "")
+                entry["unitedFlightNumbers"] = ua_best.get("flightNumbers", "")
+                entry["unitedLayover"] = ua_best.get("layover", "")
+            route_hist["history"].append(entry)
             # Keep last 180 entries
             route_hist["history"] = route_hist["history"][-180:]
 

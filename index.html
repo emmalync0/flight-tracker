@@ -546,6 +546,29 @@
         <td><a href="${flightUrl}" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;font-size:.8rem;text-decoration:none">Book \u2192</a></td>
       </tr>`
     });
+
+    // Add United row if available
+    if (last.unitedPrice) {
+      const uaDepTime = last.unitedDepartureTime || '\u2014';
+      const uaArrTime = last.unitedArrivalTime || '\u2014';
+      const uaLayover = last.unitedLayover || (last.unitedStops === 0 ? 'Nonstop' : '\u2014');
+      const uaDuration = last.unitedDuration || '\u2014';
+      rows.push({
+        key: key + '_ua', r, last, price: last.unitedPrice,
+        html: `<tr style="background:rgba(26,43,107,.04)">
+          <td style="white-space:nowrap"><strong>${r.origin} \u2192 ${r.destination}</strong></td>
+          <td>${fmtDateWithDay(r.outbound)}</td>
+          <td>${fmtDateWithDay(r.return)}</td>
+          <td class="price-cell ${priceClass(last.unitedPrice)}">${fmt(last.unitedPrice)}</td>
+          <td class="price-cell" style="color:var(--gray-500)">${fmt(last.unitedPrice * 2)}</td>
+          <td><span class="carrier-tag ua-tag">United</span></td>
+          <td style="font-size:.8rem">${uaDepTime}<br>\u2192 ${uaArrTime}</td>
+          <td>${uaDuration}</td>
+          <td style="font-size:.8rem">${uaLayover}</td>
+          <td><a href="${flightUrl}" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;font-size:.8rem;text-decoration:none">Book \u2192</a></td>
+        </tr>`
+      });
+    }
   }
 
   rows.sort((a, b) => a.price - b.price);
