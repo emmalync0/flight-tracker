@@ -192,13 +192,20 @@ def parse_google_flights(data):
             # Layover info
             layovers = flight.get("layovers", [])
             layover_text = ""
+            skip = False
             if layovers:
                 parts = []
                 for lo in layovers:
                     city = lo.get("city", lo.get("airport_code", "?"))
                     dur = lo.get("duration_label", "")
                     parts.append(f"{dur} in {city}")
+                    # Filter out long layovers (> 4 hours)
+                    minutes = lo.get("duration", 0)
+                    if minutes > 240:
+                        skip = True
                 layover_text = "; ".join(parts)
+            if skip:
+                continue
 
             offers.append({
                 "price": price,
