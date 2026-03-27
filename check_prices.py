@@ -201,6 +201,11 @@ def parse_google_flights(data):
                     parts.append(f"{dur} in {city}")
                     # Filter out long layovers (> 4 hours)
                     minutes = lo.get("duration", 0)
+                    if not minutes and dur:
+                        import re
+                        h = re.search(r"(\d+)\s*hr", dur)
+                        m = re.search(r"(\d+)\s*min", dur)
+                        minutes = (int(h.group(1)) * 60 if h else 0) + (int(m.group(1)) if m else 0)
                     if minutes > 240:
                         skip = True
                 layover_text = "; ".join(parts)
