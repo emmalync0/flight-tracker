@@ -1,10 +1,11 @@
 window.FLIGHT_DATA = {
-  "lastUpdated": "2026-03-20T15:00:24.759044+00:00",
+  "lastUpdated": "2026-03-27T23:28:43.039882+00:00",
   "config": {
     "origin": "SFO",
     "destinations": [
       "BRU",
-      "CDG"
+      "AMS",
+      "GVA"
     ],
     "cabin": "BUSINESS",
     "passengers": 2,
@@ -534,6 +535,63 @@ window.FLIGHT_DATA = {
           "layover": "22 hr 5 min in Warsaw"
         }
       ]
+    },
+    "SFO-AMS_2026-06-12_2026-06-19": {
+      "origin": "SFO",
+      "destination": "AMS",
+      "outbound": "2026-06-12",
+      "return": "2026-06-19",
+      "history": [
+        {
+          "timestamp": "2026-03-27T23:28:29.827951+00:00",
+          "price": 6165.0,
+          "carrier": "JetBlue",
+          "outStops": 1,
+          "outDuration": "13 hr 55 min",
+          "departureTime": "12-06-2026 10:25 AM",
+          "arrivalTime": "13-06-2026 09:20 AM",
+          "flightNumbers": "B6 1734, B6 31",
+          "layover": "1 hr 5 min in Boston"
+        }
+      ]
+    },
+    "SFO-BRU_2026-06-12_2026-06-19": {
+      "origin": "SFO",
+      "destination": "BRU",
+      "outbound": "2026-06-12",
+      "return": "2026-06-19",
+      "history": [
+        {
+          "timestamp": "2026-03-27T23:28:29.827951+00:00",
+          "price": 7436.0,
+          "carrier": "Air Canada",
+          "outStops": 1,
+          "outDuration": "14 hr 5 min",
+          "departureTime": "12-06-2026 08:05 AM",
+          "arrivalTime": "13-06-2026 07:10 AM",
+          "flightNumbers": "AC 756, AC 832",
+          "layover": "1 hr 20 min in Montreal"
+        }
+      ]
+    },
+    "SFO-GVA_2026-06-12_2026-06-19": {
+      "origin": "SFO",
+      "destination": "GVA",
+      "outbound": "2026-06-12",
+      "return": "2026-06-19",
+      "history": [
+        {
+          "timestamp": "2026-03-27T23:28:29.827951+00:00",
+          "price": 6890.0,
+          "carrier": "Virgin Atlantic",
+          "outStops": 1,
+          "outDuration": "14 hr 50 min",
+          "departureTime": "12-06-2026 11:15 PM",
+          "arrivalTime": "13-06-2026 11:05 PM",
+          "flightNumbers": "VS 42, BA 756",
+          "layover": "3 hr 0 min in London"
+        }
+      ]
     }
   },
   "alerts": [
@@ -550,6 +608,6 @@ window.FLIGHT_DATA = {
   ],
   "stats": {
     "lowestEver": 4268.0,
-    "checkCount": 9
+    "checkCount": 10
   }
 };
