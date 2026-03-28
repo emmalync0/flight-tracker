@@ -357,7 +357,7 @@
             <tr>
               <th>Route</th>
               <th>Depart</th>
-              <th>Return</th>
+              <th>Landing</th>
               <th>Price / person</th>
               <th>For 2</th>
               <th>Airline</th>
@@ -537,7 +537,7 @@
       html: `<tr>
         <td style="white-space:nowrap"><strong>${r.origin} \u2192 ${r.destination}</strong></td>
         <td>${fmtDateWithDay(r.outbound)}</td>
-        <td>${fmtDateWithDay(r.return)}</td>
+        <td style="font-size:.8rem">${arrTime}</td>
         <td class="price-cell ${priceClass(last.price)}">${fmt(last.price)}</td>
         <td class="price-cell" style="color:var(--gray-500)">${fmt(last.price * 2)}</td>
         <td><span class="carrier-tag ${isUA ? 'ua-tag' : ''}">${carrier}</span></td>
@@ -559,7 +559,7 @@
         html: `<tr style="background:rgba(26,43,107,.04)">
           <td style="white-space:nowrap"><strong>${r.origin} \u2192 ${r.destination}</strong></td>
           <td>${fmtDateWithDay(r.outbound)}</td>
-          <td>${fmtDateWithDay(r.return)}</td>
+          <td style="font-size:.8rem">${uaArrTime}</td>
           <td class="price-cell ${priceClass(last.unitedPrice)}">${fmt(last.unitedPrice)}</td>
           <td class="price-cell" style="color:var(--gray-500)">${fmt(last.unitedPrice * 2)}</td>
           <td><span class="carrier-tag ua-tag">United</span></td>
