@@ -513,6 +513,18 @@
     return `<strong>${day}</strong><br>${month} ${date}`;
   }
 
+  function fmtArrival(arrStr) {
+    if (!arrStr || arrStr === '\u2014') return '\u2014';
+    // Parse "DD-MM-YYYY HH:MM AM/PM"
+    const m = arrStr.match(/^(\d{2})-(\d{2})-(\d{4})\s+(.+)$/);
+    if (!m) return arrStr;
+    const d = new Date(`${m[3]}-${m[2]}-${m[1]}T12:00:00`);
+    const day = DAYS[d.getDay()];
+    const month = d.toLocaleString('en-US', { month: 'short' });
+    const date = d.getDate();
+    return `<strong>${day}</strong><br>${month} ${date}, ${m[4]}`;
+  }
+
   function googleFlightsUrl(origin, dest, outDate, retDate) {
     return `https://www.google.com/travel/flights?q=Flights+from+${origin}+to+${dest}+on+${outDate}+through+${retDate}+business+class`;
   }
@@ -537,7 +549,7 @@
       html: `<tr>
         <td style="white-space:nowrap"><strong>${r.origin} \u2192 ${r.destination}</strong></td>
         <td>${fmtDateWithDay(r.outbound)}</td>
-        <td style="font-size:.8rem">${arrTime}</td>
+        <td>${fmtArrival(arrTime)}</td>
         <td class="price-cell ${priceClass(last.price)}">${fmt(last.price)}</td>
         <td class="price-cell" style="color:var(--gray-500)">${fmt(last.price * 2)}</td>
         <td><span class="carrier-tag ${isUA ? 'ua-tag' : ''}">${carrier}</span></td>
@@ -559,7 +571,7 @@
         html: `<tr style="background:rgba(26,43,107,.04)">
           <td style="white-space:nowrap"><strong>${r.origin} \u2192 ${r.destination}</strong></td>
           <td>${fmtDateWithDay(r.outbound)}</td>
-          <td style="font-size:.8rem">${uaArrTime}</td>
+          <td>${fmtArrival(uaArrTime)}</td>
           <td class="price-cell ${priceClass(last.unitedPrice)}">${fmt(last.unitedPrice)}</td>
           <td class="price-cell" style="color:var(--gray-500)">${fmt(last.unitedPrice * 2)}</td>
           <td><span class="carrier-tag ua-tag">United</span></td>

@@ -1,212 +1,17 @@
 window.FLIGHT_DATA = {
-  "lastUpdated": "2026-03-28T05:23:25.881422+00:00",
+  "lastUpdated": "2026-03-28T05:45:53.892017+00:00",
   "config": {
     "origin": "SFO",
     "destinations": [
-      "AMS",
+      "BRU",
       "GVA",
-      "BRU"
+      "AMS"
     ],
     "cabin": "BUSINESS",
     "passengers": 2,
     "targetPrice": 5000
   },
   "routes": {
-    "SFO-AMS_2026-06-12_2026-06-19": {
-      "origin": "SFO",
-      "destination": "AMS",
-      "outbound": "2026-06-12",
-      "return": "2026-06-19",
-      "history": [
-        {
-          "timestamp": "2026-03-27T23:28:29.827951+00:00",
-          "price": 6165.0,
-          "carrier": "JetBlue",
-          "outStops": 1,
-          "outDuration": "13 hr 55 min",
-          "departureTime": "12-06-2026 10:25 AM",
-          "arrivalTime": "13-06-2026 09:20 AM",
-          "flightNumbers": "B6 1734, B6 31",
-          "layover": "1 hr 5 min in Boston"
-        },
-        {
-          "timestamp": "2026-03-27T23:30:36.511155+00:00",
-          "price": 6165.0,
-          "carrier": "JetBlue",
-          "outStops": 1,
-          "outDuration": "13 hr 55 min",
-          "departureTime": "12-06-2026 10:25 AM",
-          "arrivalTime": "13-06-2026 09:20 AM",
-          "flightNumbers": "B6 1734, B6 31",
-          "layover": "1 hr 5 min in Boston"
-        },
-        {
-          "timestamp": "2026-03-27T23:32:53.239318+00:00",
-          "price": 6165.0,
-          "carrier": "JetBlue",
-          "outStops": 1,
-          "outDuration": "13 hr 55 min",
-          "departureTime": "12-06-2026 10:25 AM",
-          "arrivalTime": "13-06-2026 09:20 AM",
-          "flightNumbers": "B6 1734, B6 31",
-          "layover": "1 hr 5 min in Boston"
-        },
-        {
-          "timestamp": "2026-03-27T23:36:40.156106+00:00",
-          "price": 6165.0,
-          "carrier": "JetBlue",
-          "outStops": 1,
-          "outDuration": "13 hr 55 min",
-          "departureTime": "12-06-2026 10:25 AM",
-          "arrivalTime": "13-06-2026 09:20 AM",
-          "flightNumbers": "B6 1734, B6 31",
-          "layover": "1 hr 5 min in Boston",
-          "unitedPrice": 7641.0,
-          "unitedStops": 0,
-          "unitedDuration": "10 hr 25 min",
-          "unitedDepartureTime": "12-06-2026 02:55 PM",
-          "unitedArrivalTime": "13-06-2026 10:20 AM",
-          "unitedFlightNumbers": "UA 968",
-          "unitedLayover": ""
-        },
-        {
-          "timestamp": "2026-03-27T23:43:08.955261+00:00",
-          "price": 7641.0,
-          "carrier": "United",
-          "outStops": 0,
-          "outDuration": "10 hr 25 min",
-          "departureTime": "12-06-2026 02:55 PM",
-          "arrivalTime": "13-06-2026 10:20 AM",
-          "flightNumbers": "UA 968",
-          "layover": "",
-          "unitedPrice": 7641.0,
-          "unitedStops": 0,
-          "unitedDuration": "10 hr 25 min",
-          "unitedDepartureTime": "12-06-2026 02:55 PM",
-          "unitedArrivalTime": "13-06-2026 10:20 AM",
-          "unitedFlightNumbers": "UA 968",
-          "unitedLayover": ""
-        }
-      ]
-    },
-    "SFO-BRU_2026-06-12_2026-06-19": {
-      "origin": "SFO",
-      "destination": "BRU",
-      "outbound": "2026-06-12",
-      "return": "2026-06-19",
-      "history": [
-        {
-          "timestamp": "2026-03-27T23:28:29.827951+00:00",
-          "price": 7436.0,
-          "carrier": "Air Canada",
-          "outStops": 1,
-          "outDuration": "14 hr 5 min",
-          "departureTime": "12-06-2026 08:05 AM",
-          "arrivalTime": "13-06-2026 07:10 AM",
-          "flightNumbers": "AC 756, AC 832",
-          "layover": "1 hr 20 min in Montreal"
-        },
-        {
-          "timestamp": "2026-03-27T23:30:36.511155+00:00",
-          "price": 7436.0,
-          "carrier": "Air Canada",
-          "outStops": 1,
-          "outDuration": "14 hr 5 min",
-          "departureTime": "12-06-2026 08:05 AM",
-          "arrivalTime": "13-06-2026 07:10 AM",
-          "flightNumbers": "AC 756, AC 832",
-          "layover": "1 hr 20 min in Montreal"
-        },
-        {
-          "timestamp": "2026-03-27T23:32:53.239318+00:00",
-          "price": 7436.0,
-          "carrier": "Air Canada",
-          "outStops": 1,
-          "outDuration": "14 hr 5 min",
-          "departureTime": "12-06-2026 08:05 AM",
-          "arrivalTime": "13-06-2026 07:10 AM",
-          "flightNumbers": "AC 756, AC 832",
-          "layover": "1 hr 20 min in Montreal"
-        },
-        {
-          "timestamp": "2026-03-27T23:36:40.156106+00:00",
-          "price": 6120.0,
-          "carrier": "Condor",
-          "outStops": 1,
-          "outDuration": "16 hr 0 min",
-          "departureTime": "12-06-2026 04:30 PM",
-          "arrivalTime": "13-06-2026 05:30 PM",
-          "flightNumbers": "DE 2097, SN 2614",
-          "layover": "3 hr 45 min in Frankfurt am Main",
-          "unitedPrice": 7817.0,
-          "unitedStops": 1,
-          "unitedDuration": "13 hr 50 min",
-          "unitedDepartureTime": "12-06-2026 01:55 PM",
-          "unitedArrivalTime": "13-06-2026 12:45 PM",
-          "unitedFlightNumbers": "UA 58, SN 2610",
-          "unitedLayover": "1 hr 55 min in Frankfurt am Main"
-        }
-      ]
-    },
-    "SFO-GVA_2026-06-12_2026-06-19": {
-      "origin": "SFO",
-      "destination": "GVA",
-      "outbound": "2026-06-12",
-      "return": "2026-06-19",
-      "history": [
-        {
-          "timestamp": "2026-03-27T23:28:29.827951+00:00",
-          "price": 6890.0,
-          "carrier": "Virgin Atlantic",
-          "outStops": 1,
-          "outDuration": "14 hr 50 min",
-          "departureTime": "12-06-2026 11:15 PM",
-          "arrivalTime": "13-06-2026 11:05 PM",
-          "flightNumbers": "VS 42, BA 756",
-          "layover": "3 hr 0 min in London"
-        },
-        {
-          "timestamp": "2026-03-27T23:30:36.511155+00:00",
-          "price": 6890.0,
-          "carrier": "Virgin Atlantic",
-          "outStops": 1,
-          "outDuration": "14 hr 50 min",
-          "departureTime": "12-06-2026 11:15 PM",
-          "arrivalTime": "13-06-2026 11:05 PM",
-          "flightNumbers": "VS 42, BA 756",
-          "layover": "3 hr 0 min in London"
-        },
-        {
-          "timestamp": "2026-03-27T23:32:53.239318+00:00",
-          "price": 6890.0,
-          "carrier": "Virgin Atlantic",
-          "outStops": 1,
-          "outDuration": "14 hr 50 min",
-          "departureTime": "12-06-2026 11:15 PM",
-          "arrivalTime": "13-06-2026 11:05 PM",
-          "flightNumbers": "VS 42, BA 756",
-          "layover": "3 hr 0 min in London"
-        },
-        {
-          "timestamp": "2026-03-27T23:36:40.156106+00:00",
-          "price": 6890.0,
-          "carrier": "Virgin Atlantic",
-          "outStops": 1,
-          "outDuration": "14 hr 50 min",
-          "departureTime": "12-06-2026 11:15 PM",
-          "arrivalTime": "13-06-2026 11:05 PM",
-          "flightNumbers": "VS 42, BA 756",
-          "layover": "3 hr 0 min in London",
-          "unitedPrice": 7808.0,
-          "unitedStops": 1,
-          "unitedDuration": "14 hr 40 min",
-          "unitedDepartureTime": "12-06-2026 01:55 PM",
-          "unitedArrivalTime": "13-06-2026 01:35 PM",
-          "unitedFlightNumbers": "UA 58, LX 1083",
-          "unitedLayover": "2 hr 40 min in Frankfurt am Main"
-        }
-      ]
-    },
     "SFO-AMS_2026-06-11_2026-06-19": {
       "origin": "SFO",
       "destination": "AMS",
@@ -215,6 +20,24 @@ window.FLIGHT_DATA = {
       "history": [
         {
           "timestamp": "2026-03-28T05:23:15.133773+00:00",
+          "price": 7581.0,
+          "carrier": "KLM",
+          "outStops": 0,
+          "outDuration": "10 hr 20 min",
+          "departureTime": "11-06-2026 01:45 PM",
+          "arrivalTime": "12-06-2026 09:05 AM",
+          "flightNumbers": "KL 606",
+          "layover": "",
+          "unitedPrice": 7642.0,
+          "unitedStops": 0,
+          "unitedDuration": "10 hr 25 min",
+          "unitedDepartureTime": "11-06-2026 02:55 PM",
+          "unitedArrivalTime": "12-06-2026 10:20 AM",
+          "unitedFlightNumbers": "UA 968",
+          "unitedLayover": ""
+        },
+        {
+          "timestamp": "2026-03-28T05:45:42.919549+00:00",
           "price": 7581.0,
           "carrier": "KLM",
           "outStops": 0,
@@ -253,6 +76,6 @@ window.FLIGHT_DATA = {
   ],
   "stats": {
     "lowestEver": 4268.0,
-    "checkCount": 15
+    "checkCount": 16
   }
 };
