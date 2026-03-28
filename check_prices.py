@@ -54,7 +54,7 @@ class GoogleFlightsClient:
         })
 
     def search_flights(self, origin, dest, outbound_date, return_date,
-                       cabin="BUSINESS", adults=1, max_stops=1):
+                       cabin="BUSINESS", adults=1, max_stops=0):
         resp = self.session.get(
             f"{self.BASE}/searchFlights",
             params={
@@ -170,8 +170,8 @@ def parse_google_flights(data):
             segments = flight.get("flights", [])
             stops = max(0, len(segments) - 1)
 
-            # Filter to max 1 stop
-            if stops > 1:
+            # Nonstop only
+            if stops > 0:
                 continue
 
             # Get airline from first segment

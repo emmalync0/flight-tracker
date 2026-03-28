@@ -1,15 +1,15 @@
 window.FLIGHT_DATA = {
-  "lastUpdated": "2026-03-27T23:36:53.700270+00:00",
+  "lastUpdated": "2026-03-28T05:23:25.881422+00:00",
   "config": {
     "origin": "SFO",
     "destinations": [
-      "BRU",
       "AMS",
-      "GVA"
+      "GVA",
+      "BRU"
     ],
     "cabin": "BUSINESS",
     "passengers": 2,
-    "targetPrice": 3500
+    "targetPrice": 5000
   },
   "routes": {
     "SFO-AMS_2026-06-12_2026-06-19": {
@@ -61,6 +61,24 @@ window.FLIGHT_DATA = {
           "arrivalTime": "13-06-2026 09:20 AM",
           "flightNumbers": "B6 1734, B6 31",
           "layover": "1 hr 5 min in Boston",
+          "unitedPrice": 7641.0,
+          "unitedStops": 0,
+          "unitedDuration": "10 hr 25 min",
+          "unitedDepartureTime": "12-06-2026 02:55 PM",
+          "unitedArrivalTime": "13-06-2026 10:20 AM",
+          "unitedFlightNumbers": "UA 968",
+          "unitedLayover": ""
+        },
+        {
+          "timestamp": "2026-03-27T23:43:08.955261+00:00",
+          "price": 7641.0,
+          "carrier": "United",
+          "outStops": 0,
+          "outDuration": "10 hr 25 min",
+          "departureTime": "12-06-2026 02:55 PM",
+          "arrivalTime": "13-06-2026 10:20 AM",
+          "flightNumbers": "UA 968",
+          "layover": "",
           "unitedPrice": 7641.0,
           "unitedStops": 0,
           "unitedDuration": "10 hr 25 min",
@@ -188,6 +206,32 @@ window.FLIGHT_DATA = {
           "unitedLayover": "2 hr 40 min in Frankfurt am Main"
         }
       ]
+    },
+    "SFO-AMS_2026-06-11_2026-06-19": {
+      "origin": "SFO",
+      "destination": "AMS",
+      "outbound": "2026-06-11",
+      "return": "2026-06-19",
+      "history": [
+        {
+          "timestamp": "2026-03-28T05:23:15.133773+00:00",
+          "price": 7581.0,
+          "carrier": "KLM",
+          "outStops": 0,
+          "outDuration": "10 hr 20 min",
+          "departureTime": "11-06-2026 01:45 PM",
+          "arrivalTime": "12-06-2026 09:05 AM",
+          "flightNumbers": "KL 606",
+          "layover": "",
+          "unitedPrice": 7642.0,
+          "unitedStops": 0,
+          "unitedDuration": "10 hr 25 min",
+          "unitedDepartureTime": "11-06-2026 02:55 PM",
+          "unitedArrivalTime": "12-06-2026 10:20 AM",
+          "unitedFlightNumbers": "UA 968",
+          "unitedLayover": ""
+        }
+      ]
     }
   },
   "alerts": [
@@ -209,6 +253,6 @@ window.FLIGHT_DATA = {
   ],
   "stats": {
     "lowestEver": 4268.0,
-    "checkCount": 13
+    "checkCount": 15
   }
 };
