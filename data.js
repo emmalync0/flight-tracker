@@ -1,10 +1,10 @@
 window.FLIGHT_DATA = {
-  "lastUpdated": "2026-05-07T15:00:12.953533+00:00",
+  "lastUpdated": "2026-05-08T15:00:11.313778+00:00",
   "config": {
     "origin": "SFO",
     "destinations": [
-      "BRU",
       "AMS",
+      "BRU",
       "GVA"
     ],
     "cabin": "BUSINESS",
@@ -107,6 +107,24 @@ window.FLIGHT_DATA = {
           "unitedArrivalTime": "12-06-2026 10:20 AM",
           "unitedFlightNumbers": "UA 968",
           "unitedLayover": ""
+        },
+        {
+          "timestamp": "2026-05-08T15:00:04.873144+00:00",
+          "price": 8682.0,
+          "carrier": "KLM",
+          "outStops": 0,
+          "outDuration": "10 hr 20 min",
+          "departureTime": "11-06-2026 01:45 PM",
+          "arrivalTime": "12-06-2026 09:05 AM",
+          "flightNumbers": "KL 606",
+          "layover": "",
+          "unitedPrice": 10682.0,
+          "unitedStops": 0,
+          "unitedDuration": "10 hr 25 min",
+          "unitedDepartureTime": "11-06-2026 02:55 PM",
+          "unitedArrivalTime": "12-06-2026 10:20 AM",
+          "unitedFlightNumbers": "UA 968",
+          "unitedLayover": ""
         }
       ]
     }
@@ -130,6 +148,6 @@ window.FLIGHT_DATA = {
   ],
   "stats": {
     "lowestEver": 4268.0,
-    "checkCount": 19
+    "checkCount": 20
   }
 };
