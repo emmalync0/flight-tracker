@@ -1,5 +1,5 @@
 window.FLIGHT_DATA = {
-  "lastUpdated": "2026-09-17T15:02:38.464986+00:00",
+  "lastUpdated": "2026-09-18T15:00:04.362172+00:00",
   "config": {
     "origin": "SFO",
     "destinations": [
@@ -184,6 +184,6 @@ window.FLIGHT_DATA = {
   ],
   "stats": {
     "lowestEver": 4268.0,
-    "checkCount": 108
+    "checkCount": 109
   }
 };
