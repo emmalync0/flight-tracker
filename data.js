@@ -1,11 +1,11 @@
 window.FLIGHT_DATA = {
-  "lastUpdated": "2026-09-28T15:00:05.891193+00:00",
+  "lastUpdated": "2026-09-30T15:13:09.400063+00:00",
   "config": {
     "origin": "SFO",
     "destinations": [
+      "GVA",
       "AMS",
-      "BRU",
-      "GVA"
+      "BRU"
     ],
     "cabin": "BUSINESS",
     "passengers": 2,
@@ -184,6 +184,6 @@ window.FLIGHT_DATA = {
   ],
   "stats": {
     "lowestEver": 4268.0,
-    "checkCount": 119
+    "checkCount": 120
   }
 };
